@@ -1,28 +1,22 @@
-
-
 class Pyfa < Formula
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/DarkFenX/Pyfa/wiki"
-  url "https://github.com/thorr18/Pyfa/archive/v1.17.1.tar.gz"
+  url "https://github.com/thorr18/Pyfa/archive/v1.18.0.tar.gz"
   #version already tagged by repo
   sha256 "d31b61091394939e5a6fb992eb7d9d215294544b405ae51c5bbc6d91507e5dd2"
-
   bottle do
     cellar :any
     puts "bottle is empty"
   end
-
   head "https://github.com/thorr18/Pyfa.git", :branch => "master"
   option "with-external", "use Python dependencies installed with Pip instead of bundling"
   deprecated_option "Wx3" => "noWx3"
   option "noWx3", "use Pyfa with wx 2.X"
-
   if MacOS.version <= :snow_leopard
     depends_on :python
   else
     depends_on :python => [:optional, "framework"]
   end
-
   if build.with? "external"
     puts "with external option"
     depends_on "wxPython" => [:python, "framework"]
@@ -50,14 +44,12 @@ class Pyfa < Formula
       sha256 "0577249d4b6c4b11fd97c28037e98664bfaa0559022fee7bcef6b752a106e505"
     end
   end
-
   def install
     pyver = Language::Python.major_minor_version "python"
     pathsitetail = "lib/python"+pyver+"/site-packages"
     pathvendor = libexec+"vendor"
     pathvendorsite = pathvendor+pathsitetail
     pathsite = libexec+pathsitetail
-
     ENV.prepend_create_path "PYTHONPATH", pathvendorsite
     resources.each do |r|
       r.stage do
@@ -66,21 +58,17 @@ class Pyfa < Formula
     end
     ENV.prepend_create_path "PYTHONPATH", pathsite
     system "python", *Language::Python.setup_install_args(libexec)
-
     bin.install Dir[libexec/"bin/*"]
     bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
-
     ENV.prepend_create_path "PYTHONPATH", libexec
     %w["somestuff" | "otherstuff" | "iforget"].each do |d|
       libexec.install Dir[d]
     end
   end
-
   def caveats; <<-EOS.undent
-        This formula is still under construction.
+    This formula is still under construction.
   EOS
   end
-
   test do
     Language::Python.each_python(build) do |python, _version|
       system "#{python} -c import wx; print wx.version()"
