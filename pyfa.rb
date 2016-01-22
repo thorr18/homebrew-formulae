@@ -1,12 +1,12 @@
 class Pyfa < Formula
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/DarkFenX/Pyfa/wiki"
-  url "https://github.com/thorr18/Pyfa/archive/v1.18.0.tar.gz"
+  url "https://github.com/thorr18/Pyfa/archive/1.17.12.tar.gz"
   #version already tagged by repo
-  sha256 "32a598f336cca869180110b51e9149cc2007f0f760c4c5eb8b9e81f73f8abee3"
+  #sha256 "32a598f336cca869180110b51e9149cc2007f0f760c4c5eb8b9e81f73f8abee3"
   bottle do
     cellar :any
-    puts "bottle is empty"
+    #bottle is empty
   end
   head "https://github.com/thorr18/Pyfa.git", :branch => "master"
   option "with-external", "use Python dependencies installed with Pip instead of bundling"
