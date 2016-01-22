@@ -18,7 +18,6 @@ class Pyfa < Formula
     depends_on :python => [:optional, "framework"]
   end
   if build.with? "external"
-    puts "with external option"
     depends_on "wxPython" => [:python, "framework"]
     depends_on "matplotlib" => [:python, :recommended]
     depends_on "numpy" => [:python, :recommended]
@@ -26,7 +25,6 @@ class Pyfa < Formula
     depends_on "SQLAlchemy" => :python
     depends_on "requests" => :python
   else
-    puts "default bundled option; not external"
     depends_on "wxPython" => "framework" if build.without? "noWx3"
     depends_on "homebrew/versions/wxPython2.8" => "framework" if build.with? "noWx3"
     depends_on "homebrew/python/matplotlib" => :recommended
@@ -70,9 +68,7 @@ class Pyfa < Formula
   EOS
   end
   test do
-    Language::Python.each_python(build) do |python, _version|
-      system "#{python} -c import wx; print wx.version()"
-    end
-    system "#{bin}/Pyfa", "-d -test"
+    system "#{python} -c import wx; print wx.version()"
+    system "#{bin}/Pyfa", "-test"
   end
 end
