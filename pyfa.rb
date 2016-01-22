@@ -55,7 +55,7 @@ class Pyfa < Formula
       end
     end
     ENV.prepend_create_path "PYTHONPATH", pathsite
-    system "python", *Language::Python.setup_install_args(libexec)
+    system "python", *Language::Python.setup_install_args(libexec/" -py2app ")
     bin.install Dir[libexec/"bin/*"]
     bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
     ENV.prepend_create_path "PYTHONPATH", libexec
