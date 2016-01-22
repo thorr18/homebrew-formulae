@@ -3,7 +3,7 @@ class Pyfa < Formula
   homepage "https://github.com/DarkFenX/Pyfa/wiki"
   url "https://github.com/thorr18/Pyfa/archive/1.17.14.tar.gz"
   #version already tagged by repo
-  sha256 "103382fbc4bb9889f40555f9a4a50a9306c7b69ece6957a30da94c28fc696bb3"
+  sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
   bottle do
     cellar :any
     #bottle is empty
