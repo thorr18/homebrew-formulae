@@ -1,9 +1,9 @@
 class Pyfa < Formula
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/DarkFenX/Pyfa/wiki"
-  url "https://github.com/thorr18/Pyfa/archive/1.17.14.tar.gz"
+  url "https://github.com/thorr18/Pyfa/archive/1.17.15.tar.gz"
   #version already tagged by repo
-  sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
+  #sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
   bottle do
     cellar :any
     #bottle is empty
@@ -56,9 +56,11 @@ class Pyfa < Formula
     end
     ENV.prepend_create_path "PYTHONPATH", pathsite
     #system "python", *Language::Python.setup_install_args(libexec/ "py2app ")
-    system "python", "setup.py", "py2app", "--prefix=#{libexec}"
+    #system "python", "setup.py", "py2app", "--prefix=#{libexec}"
+    system "python", "setup.py", "install", "--prefix=#{libexec}",
+           "--single-version-externally-managed", "--record=installed.txt"
     bin.install Dir[libexec/"bin/*"]
-    bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
+    bin.env_script_all_files(libexec+"bin", :PYTHONPATH => ENV["PYTHONPATH"])
     ENV.prepend_create_path "PYTHONPATH", libexec
     %w["somestuff" | "otherstuff" | "iforget"].each do |d|
       libexec.install Dir[d]
