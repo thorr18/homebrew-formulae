@@ -1,7 +1,7 @@
 class Pyfa < Formula
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/pyfa-org/Pyfa/wiki"
-  url "https://github.com/thorr18/Pyfa/archive/1.17.25.tar.gz"
+  url "https://github.com/thorr18/Pyfa/archive/1.17.28.tar.gz"
   #version already tagged by repo
   #sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
   bottle do
@@ -56,7 +56,7 @@ class Pyfa < Formula
     end
     ENV.prepend_create_path "PYTHONPATH", pathsite
     system "python", *Language::Python.setup_install_args(libexec)
-    bin.install Dir[libexec/"bin/*"]
+    bin.install Dir[libexec/"bin/pyfa"]
     bin.env_script_all_files(libexec+"bin", :PYTHONPATH => ENV["PYTHONPATH"])
     ENV.prepend_create_path "PYTHONPATH", libexec
     %w["imgs" | "otherstuff" | "stuff"].each do |d|
