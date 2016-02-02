@@ -1,7 +1,8 @@
 class Pyfa < Formula
+  #revision 1
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/pyfa-org/Pyfa/wiki"
-  ver='1.17.40'
+  ver='1.17.42'
   url "https://github.com/thorr18/Pyfa/archive/"+ver+"+thorr."+ver+".tar.gz"
   #version already tagged by repo
   #sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
@@ -18,6 +19,7 @@ class Pyfa < Formula
   else
     depends_on :python => [:optional, "framework"]
   end
+  #depends_on "setuptools" => [:build, :python]
   if build.with? "external"
     depends_on "wxPython" => [:python, "framework"]
     depends_on "matplotlib" => [:python, :recommended]
@@ -27,7 +29,7 @@ class Pyfa < Formula
     depends_on "requests" => :python
   else
     depends_on "wxPython" => "framework" if build.without? "noWx3"
-    depends_on "homebrew/versions/wxPython2.8" => "framework" if build.with? "noWx3"
+    depends_on "thorr18/formulae/versions/wxPython2.8" => "framework" if build.with? "noWx3"
     depends_on "homebrew/python/matplotlib" => :recommended
     depends_on "homebrew/python/numpy" => :recommended
     resource "python-dateutil" if build.without? "matplotlib" do
@@ -42,6 +44,10 @@ class Pyfa < Formula
       url "https://pypi.python.org/packages/source/r/requests/requests-2.6.2.tar.gz"
       sha256 "0577249d4b6c4b11fd97c28037e98664bfaa0559022fee7bcef6b752a106e505"
     end
+  end
+  patch do
+    url "https://raw.githubusercontent.com/Homebrew/patches/e223e971/id3lib/boolcheck.patch"
+    sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
   end
   def install
     pyver = Language::Python.major_minor_version "python"
@@ -60,7 +66,7 @@ class Pyfa < Formula
     bin.install Dir[libexec/"bin/*"]
     bin.env_script_all_files(libexec/"bin", :PYTHONPATH => ENV["PYTHONPATH"])
     ENV.prepend_create_path "PYTHONPATH", libexec
-    %w["imgs" | "otherstuff" | "stuff"].each do |d|
+    %w["imgs" | "otherstuff" | "stuff" | 'imgs/gui'].each do |d|
       libexec.install Dir[d]
     end
   end
