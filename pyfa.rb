@@ -1,5 +1,5 @@
 class Pyfa < Formula
-  revision 2
+  revision 3
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/pyfa-org/Pyfa/wiki"
   ver='1.17.42'
@@ -45,10 +45,10 @@ class Pyfa < Formula
       sha256 "0577249d4b6c4b11fd97c28037e98664bfaa0559022fee7bcef6b752a106e505"
     end
   end
-  patch do if FALSE
+  #patch do if FALSE
     #url "https://raw.githubusercontent.com/thorr18/patches/e223e971/id3lib/boolcheck.patch"
     #sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
-  end
+  #end
   def install
     pyver = Language::Python.major_minor_version "python"
     pathsitetail = "lib/python"+pyver+"/site-packages"
