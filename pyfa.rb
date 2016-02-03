@@ -2,7 +2,7 @@ class Pyfa < Formula
   revision 1
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/pyfa-org/Pyfa/wiki"
-  ver='1.17.43'
+  ver='1.17.45'
   #version tagged in this repo includes a downstream version identifier (PEP-0440)
   url "https://github.com/thorr18/Pyfa/archive/"+ver+"+thorr."+ver+".tar.gz"
   #sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
