@@ -1,19 +1,19 @@
 class Pyfa < Formula
-  revision 3
+  revision 1
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/pyfa-org/Pyfa/wiki"
-  ver='1.17.42'
+  ver='1.17.43'
+  #version tagged in this repo includes a downstream version identifier (PEP-0440)
   url "https://github.com/thorr18/Pyfa/archive/"+ver+"+thorr."+ver+".tar.gz"
-  #version already tagged by repo
   #sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
   bottle do
     cellar :any
     #bottle is empty
   end
   head "https://github.com/thorr18/Pyfa.git", :branch => "master"
-  option "with-external", "use Python dependencies installed with Pip instead of bundling"
+  option "with-external", "expect Python dependencies installed with Pip instead of bundling"
   deprecated_option "Wx3" => "noWx3"
-  option "noWx3", "use Pyfa with wx 2.X"
+  option "noWx3", "use Pyfa with wx 2.X for compatability"
   if MacOS.version <= :snow_leopard
     depends_on :python
   else
@@ -46,7 +46,7 @@ class Pyfa < Formula
     end
   end
   #patch do if FALSE
-    #url "https://raw.githubusercontent.com/thorr18/patches/e223e971/id3lib/boolcheck.patch"
+    #url "https://raw.githubusercontent.com/thorr18/homebrew-formulae/patches/e223e971/pyfa/setupentrypoints.patch"
     #sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
   #end
   def install
