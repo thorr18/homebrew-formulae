@@ -1,8 +1,8 @@
 class Pyfa < Formula
-  revision 1
+  revision 7
   desc "Ship fitting tool for EVE Online game"
   homepage "https://github.com/pyfa-org/Pyfa/wiki"
-  ver='1.17.45'
+  ver='1.17.48'
   #version tagged in this repo includes a downstream version identifier (PEP-0440)
   url "https://github.com/thorr18/Pyfa/archive/"+ver+"+thorr."+ver+".tar.gz"
   #sha256 "b7722d9ce4822deefe68cfb8c89d1c69d4147116dc72cccbeed2c16b8869579b"
@@ -48,6 +48,14 @@ class Pyfa < Formula
   #patch do if FALSE
     #url "https://raw.githubusercontent.com/thorr18/homebrew-formulae/patches/e223e971/pyfa/setupentrypoints.patch"
     #sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
+  #end
+  #patch do if FALSE
+    #url "https://raw.githubusercontent.com/thorr18/homebrew-formulae/patches/b236e788/pyfa/wximporting.patch"
+    #sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
+  #end
+  #patch do if FALSE
+  #url "https://raw.githubusercontent.com/thorr18/homebrew-formulae/patches/f1752cc1/pyfa/configdownstreamversion.patch"
+  #sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
   #end
   def install
     pyver = Language::Python.major_minor_version "python"
