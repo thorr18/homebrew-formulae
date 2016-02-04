@@ -50,7 +50,7 @@ class Pyfa < Formula
     #sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
   #end
   #patch do if FALSE
-    #url "https://raw.githubusercontent.com/thorr18/homebrew-formulae/patches/b236e788/pyfa/wximporting.patch"
+    #url "https://raw.githubusercontent.com/thorr18/homebrew-formulae/patches/b236e788/pyfa/improvewximporting.patch"
     #sha256 "a7881dc25665f284798934ba19092d1eb45ca515a34e5c473accd144aa1a215a"
   #end
   #patch do if FALSE
